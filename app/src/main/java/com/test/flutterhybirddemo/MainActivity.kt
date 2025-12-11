@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.test.flutterhybirddemo.databinding.ActivityMainBinding
 import io.flutter.embedding.android.FlutterActivity;
+
 class MainActivity : AppCompatActivity() {
     val vb by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         vb.btnFlutter.setOnClickListener {
-            startActivity(
-                FlutterActivity.createDefaultIntent(this)
-            )
+            val flutterIntent = FlutterActivity
+                .withCachedEngine(MyApp.FLUTTER_ENGINE_ID) // 指定缓存的引擎ID
+                .build(this)
+            startActivity(flutterIntent)
         }
     }
 }
