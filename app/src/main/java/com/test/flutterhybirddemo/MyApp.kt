@@ -15,7 +15,10 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initFlutterEngine()
+    }
 
+    fun initFlutterEngine() {
         // 1. 创建FlutterEngine实例
         flutterEngine = FlutterEngine(this)
 
